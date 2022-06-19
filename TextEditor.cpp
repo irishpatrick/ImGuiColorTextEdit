@@ -492,12 +492,12 @@ TextEditor::Coordinates TextEditor::FindNextWord(const Coordinates & aFrom) cons
 
 int TextEditor::GetCharacterIndex(const Coordinates& aCoordinates) const
 {
-	if (aCoordinates.mLine >= mLines.size())
+	if (aCoordinates.mLine >= (int)mLines.size())
 		return -1;
 	auto& line = mLines[aCoordinates.mLine];
 	int c = 0;
 	int i = 0;
-	for (; i < line.size() && c < aCoordinates.mColumn;)
+	for (; i < (int)line.size() && c < aCoordinates.mColumn;)
 	{
 		if (line[i].mChar == '\t')
 			c = (c / mTabSize) * mTabSize + mTabSize;
@@ -529,7 +529,7 @@ int TextEditor::GetCharacterColumn(int aLine, int aIndex) const
 
 int TextEditor::GetLineCharacterCount(int aLine) const
 {
-	if (aLine >= mLines.size())
+	if (aLine >= (int)mLines.size())
 		return 0;
 	auto& line = mLines[aLine];
 	int c = 0;
@@ -544,7 +544,7 @@ int TextEditor::GetLineMaxColumn(int aLine) const
 		return 0;
 	auto& line = mLines[aLine];
 	int col = 0;
-	for (unsigned i = 0; i < line.size(); )
+	for (unsigned int i = 0; i < line.size(); )
 	{
 		auto c = line[i].mChar;
 		if (c == '\t')
