@@ -2396,7 +2396,7 @@ float TextEditor::TextDistanceToLineStart(const Coordinates& aFrom) const
 	float distance = 0.0f;
 	float spaceSize = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize(), FLT_MAX, -1.0f, " ", nullptr, nullptr).x;
 	int colIndex = GetCharacterIndex(aFrom);
-	for (size_t it = 0u; it < line.size() && it < colIndex; )
+	for (size_t it = 0u; it < line.size() && it < (size_t)colIndex; )
 	{
 		if (line[it].mChar == '\t')
 		{
