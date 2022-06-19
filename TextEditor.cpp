@@ -2408,7 +2408,7 @@ float TextEditor::TextDistanceToLineStart(const Coordinates& aFrom) const
 			auto d = UTF8CharLength(line[it].mChar);
 			char tempCString[7];
 			int i = 0;
-			for (; i < 6 && d-- > 0 && it < (int)line.size(); i++, it++)
+			for (; i < 6 && d-- > 0 && it < line.size(); i++, it++) // possible bug here, could be i < ... instead of it < ...
 				tempCString[i] = line[it].mChar;
 
 			tempCString[i] = '\0';
