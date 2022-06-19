@@ -84,7 +84,7 @@ std::string TextEditor::GetText(const Coordinates & aStart, const Coordinates & 
 	auto iend = GetCharacterIndex(aEnd);
 	size_t s = 0;
 
-	for (size_t i = lstart; i < lend; i++)
+	for (size_t i = (size_t)lstart; i < (size_t)lend; i++)
 		s += mLines[i].size();
 
 	result.reserve(s + s / 8);
