@@ -2254,17 +2254,17 @@ void TextEditor::ColorizeInternal()
 
 	if (mCheckComments)
 	{
-		auto endLine = mLines.size();
-		auto endIndex = 0;
-		auto commentStartLine = endLine;
-		auto commentStartIndex = endIndex;
-		auto withinString = false;
-		auto withinSingleLineComment = false;
-		auto withinPreproc = false;
-		auto firstChar = true;			// there is no other non-whitespace characters in the line before
-		auto concatenate = false;		// '\' on the very end of the line
-		auto currentLine = 0;
-		auto currentIndex = 0;
+		int endLine = (int)mLines.size();
+		int endIndex = 0;
+		int commentStartLine = endLine;
+		int commentStartIndex = endIndex;
+		bool withinString = false;
+		bool withinSingleLineComment = false;
+		bool withinPreproc = false;
+		bool firstChar = true;			// there is no other non-whitespace characters in the line before
+		bool concatenate = false;		// '\' on the very end of the line
+		int currentLine = 0;
+		int currentIndex = 0;
 		while (currentLine < endLine || currentIndex < endIndex)
 		{
 			auto& line = mLines[currentLine];
