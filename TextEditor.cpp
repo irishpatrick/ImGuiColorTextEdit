@@ -1626,7 +1626,7 @@ void TextEditor::MoveRight(int aAmount, bool aSelect, bool aWordMode)
 {
 	auto oldPos = mState.mCursorPosition;
 
-	if (mLines.empty() || oldPos.mLine >= mLines.size())
+	if (mLines.empty() || oldPos.mLine >= (int)mLines.size())
 		return;
 
 	auto cindex = GetCharacterIndex(mState.mCursorPosition);
@@ -1635,9 +1635,9 @@ void TextEditor::MoveRight(int aAmount, bool aSelect, bool aWordMode)
 		auto lindex = mState.mCursorPosition.mLine;
 		auto& line = mLines[lindex];
 
-		if (cindex >= line.size())
+		if (cindex >= (int)line.size())
 		{
-			if (mState.mCursorPosition.mLine < mLines.size() - 1)
+			if (mState.mCursorPosition.mLine < (int)mLines.size() - 1)
 			{
 				mState.mCursorPosition.mLine = std::max(0, std::min((int)mLines.size() - 1, mState.mCursorPosition.mLine + 1));
 				mState.mCursorPosition.mColumn = 0;
@@ -1875,7 +1875,7 @@ void TextEditor::Backspace()
 			--u.mRemovedStart.mColumn;
 			--mState.mCursorPosition.mColumn;
 
-			while (cindex < line.size() && cend-- > cindex)
+			while (cindex < (int)line.size() && cend-- > cindex)
 			{
 				u.mRemoved += line[cindex].mChar;
 				line.erase(line.begin() + cindex);
