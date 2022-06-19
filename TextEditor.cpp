@@ -510,7 +510,7 @@ int TextEditor::GetCharacterIndex(const Coordinates& aCoordinates) const
 
 int TextEditor::GetCharacterColumn(int aLine, int aIndex) const
 {
-	if (aLine >= mLines.size())
+	if (aLine >= (int)mLines.size())
 		return 0;
 	auto& line = mLines[aLine];
 	int col = 0;
@@ -533,14 +533,14 @@ int TextEditor::GetLineCharacterCount(int aLine) const
 		return 0;
 	auto& line = mLines[aLine];
 	int c = 0;
-	for (unsigned i = 0; i < line.size(); c++)
+	for (unsigned int i = 0; i < line.size(); c++)
 		i += UTF8CharLength(line[i].mChar);
 	return c;
 }
 
 int TextEditor::GetLineMaxColumn(int aLine) const
 {
-	if (aLine >= mLines.size())
+	if (aLine >= (int)mLines.size())
 		return 0;
 	auto& line = mLines[aLine];
 	int col = 0;
@@ -1013,7 +1013,7 @@ void TextEditor::Render()
 			auto prevColor = line.empty() ? mPalette[(int)PaletteIndex::Default] : GetGlyphColor(line[0]);
 			ImVec2 bufferOffset;
 
-			for (int i = 0; i < line.size();)
+			for (int i = 0; i < (int)line.size();)
 			{
 				auto& glyph = line[i];
 				auto color = GetGlyphColor(glyph);
